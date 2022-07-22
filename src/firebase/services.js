@@ -1,8 +1,5 @@
 import {collection, getDocs, orderBy, limit, query, addDoc, where} from "firebase/firestore";
 import {db} from "./firebaseConfig";
-import {useSelector} from "react-redux";
-import {getScoreObject} from "../redux/cardGameSlice";
-import {createAsyncThunk} from "@reduxjs/toolkit";
 
 const scoreRef = collection(db, "scores");
 
@@ -24,7 +21,7 @@ export const saveScore = async (input) => {
 
         const filtered = data.docs.map((doc) => ({...doc.data(), id: doc.id}));
         if (filtered.length === 0 || filtered.some((item) => item.score < input.score)) {
-            const docRef = await addDoc(scoreRef, {
+            await addDoc(scoreRef, {
                 name: input.name,
                 score: input.score,
             });

@@ -1,7 +1,6 @@
 import {createSlice, nanoid} from "@reduxjs/toolkit";
 import {items} from "./items";
 import {Modal as BootstrapModal} from "bootstrap";
-import {saveScoreAsync} from "../firebase/services";
 import * as jquery from 'jquery';
 
 
@@ -23,15 +22,6 @@ const initialState = {
     error: null,
     scoreObject: {name: '', score: 200, orderNumber: null},
 };
-
-const closeScoreboard = () => {
-    let modal = jquery('#scoreboardModal')
-    modal.hide()
-
-    jquery('.modal-backdrop').fadeOut(500, function () {
-        jquery(this).remove();
-    });
-}
 
 export const cardGameSlice = createSlice({
     name: "cardGame",
