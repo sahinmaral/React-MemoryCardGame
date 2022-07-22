@@ -1,0 +1,92 @@
+export const items = [
+    {
+        id: "Angular",
+        imageUrl: "./images/angular2.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Vue",
+        imageUrl: "./images/vue.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Yarn",
+        imageUrl: "./images/yarn.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Babel",
+        imageUrl: "./images/babel.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Ionic",
+        imageUrl: "./images/ionic.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Browserify",
+        imageUrl: "./images/browserify.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Meteor",
+        imageUrl: "./images/meteor.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Yeoman",
+        imageUrl: "./images/yeoman.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Ember",
+        imageUrl: "./images/ember.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Grunt",
+        imageUrl: "./images/grunt.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "NodeJS",
+        imageUrl: "./images/nodejs.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "PhantomJS",
+        imageUrl: "./images/phantomjs.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "React",
+        imageUrl: "./images/react.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Gulp",
+        imageUrl: "./images/gulp.png",
+        isOpened: false,
+        isMatched: false,
+    },
+    {
+        id: "Bower",
+        imageUrl: "./images/bower.png",
+        isOpened: false,
+        isMatched: false,
+    },
+];
