@@ -20,7 +20,7 @@ const initialState = {
     items: addedItems,
     isLoading: false,
     error: null,
-    scoreObject: {name: '', score: 200, orderNumber: null},
+    scoreObject: {name: '', score: 200},
 };
 
 export const cardGameSlice = createSlice({
