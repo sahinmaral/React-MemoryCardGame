@@ -1,6 +1,7 @@
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project also deployed on [Netlify](https://sahinmaral-memorycardgame.netlify.app/)
 
 ## Available Scripts
 
@@ -73,8 +74,9 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 
 <ul>
     <li>First of all , I would like to thank to <a href="https://github.com/Suleyman1406">Suleyman1406</a> to gave me inspiration about designing game on CSS and provided to start to learn Cloud Firebase.</li>
-    <li>For state management , I am using Redux</li>
-    <li>For saving and adding scores , I am using Cloud Firebase. I haven't used this platform and it was my first try.</li>
+    <li>For deployment , I have used Netlify</li>
+    <li>For state management , I have used Redux</li>
+    <li>For saving and adding scores , I have used Cloud Firebase. I haven't used this platform and it was my first try.</li>
     <li>After entering site , we are asking you to enter name to save your score on scoreboard. Maybe you will pass someone else :)</li>
     <li>You are starting with 200 score. Each correct gives 50 points and each wrong takes 10 points.</li>
     <li>After matching all cards , you can see your score and scoreboard. You can play again if you want.</li>
