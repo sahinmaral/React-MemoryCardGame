@@ -1,0 +1,21 @@
+{
+    "welcome" : "Welcome to Developer Memory Game",
+    "score" : {
+        "header" : "Your Score",
+        "scoreboard" : "Score"
+    },
+    "game-information" : "Your start score is <blueBold>200</blueBold>. Each correct gives <greenBold>50</greenBold> points , each wrong takes <redBold>10</redBold> points.",
+    "reload-game" : "Reload Game",
+    "enter-name" : {
+        "form" : "Please enter name",
+        "header" : "Enter name to save your score on scoreboard"
+    },
+    "start-game":"Start game",
+    "failed-game" : "You failed the game , {{name}}",
+    "leadership" : "Leadership",
+    "name" : {
+        "scoreboard" : "Name"
+    },
+    "play-again" : "Play again",
+    "completed-game" : "You completed the game , {{name}}"
+} 

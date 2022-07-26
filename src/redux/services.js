@@ -1,3 +1,4 @@
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   collection,
   getDocs,
@@ -9,23 +10,21 @@ import {
   addDoc,
   where,
 } from "firebase/firestore";
-import { db } from "./firebaseConfig";
+import { db } from "../firebase/firebaseConfig";
 
 const scoreRef = collection(db, "scores");
 
-export const getScores = async () => {
+export const getScores = createAsyncThunk("cardGame/getScores", async () => {
   let data = null;
-  try {
-    const dataQuery = query(scoreRef, orderBy("score", "desc"), limit(15));
-    data = await getDocs(dataQuery);
-  } catch (error) {
-    throw error;
-  }
-  return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
-};
+  const dataQuery = query(scoreRef, orderBy("score", "desc"), limit(15));
+  data = await getDocs(dataQuery);
 
-export const saveScore = async (input) => {
-  try {
+  return data.docs.map((doc) => ({ ...doc.data(), id: doc.id }));
+});
+
+export const saveScore = createAsyncThunk(
+  "cardGame/saveScore",
+  async (input) => {
     const dataQuery = query(scoreRef, where("name", "==", input.name));
     const data = await getDocs(dataQuery);
 
@@ -40,7 +39,5 @@ export const saveScore = async (input) => {
       const docRef = doc(db, "scores", item.id);
       await setDoc(docRef, input);
     }
-  } catch (e) {
-    console.error("Error saving score: ", e.message);
   }
-};
+);

@@ -1,8 +1,11 @@
 import {useEffect, useState} from 'react';
+import { useTranslation } from 'react-i18next';
 import {useDispatch} from "react-redux";
-import {changeName, closeLoginModal} from "../redux/cardGameSlice";
+import {changeName, closeModal} from "../redux/cardGameSlice";
 
 function LoginModal() {
+
+    const { t } = useTranslation();
 
     const [name, setName] = useState('');
     const [error, setError] = useState(null);
@@ -11,24 +14,24 @@ function LoginModal() {
 
     useEffect(() => {
         if (name.length === 0) {
-            setError('Please enter name')
+            setError(t('enter-name.form'))
         }
         else{
             setError(null)
         }
-    }, [name]);
+    }, [name,t]);
 
     const handleSubmit = (event) => {
         event.preventDefault()
 
         if (name.length === 0) {
-            setError('Please enter name')
+            setError(t('enter-name.form'))
             return;
         }
 
         setError(null)
         dispatch(changeName(name))
-        dispatch(closeLoginModal())
+        dispatch(closeModal('loginModal'))
     }
 
     return (<div
@@ -44,7 +47,7 @@ function LoginModal() {
                 <div className="modal-content" style={{backgroundColor: "white"}}>
                     <div className="modal-header">
                         <h5 className="modal-title" id="loginModalLabel">
-                            Enter name to save your score on scoreboard
+                            {t('enter-name.header')}
                         </h5>
                     </div>
                     <div className="modal-body">
@@ -54,7 +57,7 @@ function LoginModal() {
                             <small id="passwordHelp" className="text-danger">
                                 {error}
                             </small>
-                            <button type="submit" className='btn btn-success w-100 mt-3'>Start game</button>
+                            <button type="submit" className='btn btn-success w-100 mt-3'>{t('start-game')}</button>
                         </form>
                     </div>
                 </div>

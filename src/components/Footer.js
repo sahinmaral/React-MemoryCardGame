@@ -2,7 +2,7 @@ import React from "react";
 
 function Footer() {
     return (
-        <footer className="text-center" id='footer'>
+        <footer className="text-center wrapper" id='footer'>
             <div className="container p-4">
                 <section className="mb-4">
 
@@ -38,12 +38,6 @@ function Footer() {
                     </a>
                 </section>
             </div>
-            {/*        <div className="text-center p-3">
-            © 2020 Copyright:
-            <a className="text-white" href="https://mdbootstrap.com/">
-                MDBootstrap.com
-            </a>
-        </div>*/}
         </footer>
     );
 }

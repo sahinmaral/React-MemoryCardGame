@@ -1,0 +1,21 @@
+{
+    "welcome" : "Hafıza kartı oyununa hoşgeldiniz",
+    "score" : {
+        "header" : "Skorunuz",
+        "scoreboard" : "Skor"
+    },
+    "game-information": "Başlangıç skorunuz <blueBold>200</blueBold>'dür. Her doğru eşleştirmede <greenBold>50</greenBold> puan alırsınız , her yanlış eşleştirmede <redBold>10</redBold> puan kaybedersiniz.",
+    "reload-game" : "Oyunu yenile",
+    "enter-name" : {
+        "form" : "Lütfen isminizi giriniz",
+        "header" : "Skor tablosuna skorunuzu kaydetmek için lütfen isminizi giriniz"
+    },
+    "start-game":"Oyunu başlat",
+    "failed-game" : "Oyunu kaybettiniz , {{name}}",
+    "leadership" : "Liderlik tablosu",
+    "name" : {
+        "scoreboard" : "İsim"
+    },
+    "play-again" : "Tekrar oyna",
+    "completed-game" : "Oyunu bitirdiniz , {{name}}"
+}

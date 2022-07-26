@@ -1,51 +1,71 @@
-import {useEffect, useLayoutEffect} from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
 import Card from "./components/Card";
 import {
   getCards,
   getMatchedCards,
-  getScoreObject, openLoginModal,
-  openScoreboard,
+  getScoreObject,
+  openModal,
   reloadGame,
 } from "./redux/cardGameSlice";
-
-import Scoreboard from "./components/Scoreboard";
+import ScoreboardModal from "./components/ScoreboardModal";
 import LoginModal from "./components/LoginModal";
 import Footer from "./components/Footer";
+import FailedGameModal from "./components/FailedGameModal";
+import { useTranslation } from "react-i18next";
+import { Trans } from "react-i18next";
 
 function App() {
+  const { t, i18n } = useTranslation();
+
   const cards = useSelector(getCards);
   const matchedCards = useSelector(getMatchedCards);
   const scoreObject = useSelector(getScoreObject);
+  const { status } = useSelector((state) => state.cardGame);
 
   const dispatch = useDispatch();
 
+  const handleSelectOption = (lang) => {
+    i18n.changeLanguage(lang);
+  };
+
   useEffect(() => {
-    (async()=>{
+    (async () => {
       if (matchedCards.length === cards.length) {
-        dispatch(openScoreboard());
-
+        if (status === "succeeded") dispatch(openModal("scoreboardModal"));
+      } else if (scoreObject.score === 0) {
+        dispatch(openModal("failedGameModal"));
       }
-    })()
-  }, [matchedCards, cards]);
+    })();
+  }, [matchedCards, cards, scoreObject, dispatch, status]);
 
   useEffect(() => {
-    dispatch(openLoginModal())
-  }, []);
+    dispatch(openModal("loginModal"));
+  }, [dispatch]);
 
   return (
     <>
-      {(matchedCards.length === cards.length) && <Scoreboard />}
+      {matchedCards.length === cards.length && <ScoreboardModal />}
+      {scoreObject.score === 0 && <FailedGameModal />}
       <LoginModal />
-      <div id="header-wrapper">
-        <h1>Welcome to the Developer Memory Game</h1>
+      <div id="header-wrapper" className="wrapper d-flex justify-content-between">
+        <h1>{t("welcome")}</h1>
+        <select
+          className="form-select form-select-sm"
+          aria-label="Change language"
+          defaultValue={i18n.language}
+          onChange={(e) => handleSelectOption(e.target.value)}
+        >
+          <option value="en">EN</option>
+          <option value="tr">TR</option>
+        </select>
       </div>
-      <div id="card-wrapper">
-        <div className="mb-3">
+      <div id="game-information" className="wrapper mt-3">
           <div className="d-flex justify-content-between">
             <p className="m-0 p-0">
-              <b>Your Score</b> : <b style={{ color: "purple" }}>{scoreObject.score}</b>
+              <b>{t('score.header')}</b> :{" "}
+              <b style={{ color: "purple" }}>{scoreObject.score}</b>
             </p>
             <button
               className="btn btn-warning text-light"
@@ -57,17 +77,23 @@ function App() {
                 padding: "0 5px",
               }}
             >
-              <b>Reload Game</b>
+              <b>{t('reload-game')}</b>
             </button>
           </div>
           <div className="d-flex justify-content-between">
             <p className="m-0 p-0">
-              Your start score is <b style={{ color: "blue" }}>200</b>. Each
-              correct gives <b style={{ color: "green" }}>50</b> points , each
-              wrong takes <b style={{ color: "red" }}>10</b> points.
+              <Trans
+                i18nKey="game-information"
+                components={{
+                  blueBold: <b style={{ color: "blue" }} />,
+                  greenBold: <b style={{ color: "green" }} />,
+                  redBold: <b style={{ color: "red" }} />,
+                }}
+              />
             </p>
           </div>
-        </div>
+      </div>
+      <div id="card-wrapper" className="wrapper">
         <div>
           {cards.map((card) => {
             return (
@@ -85,7 +111,7 @@ function App() {
           })}
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }
