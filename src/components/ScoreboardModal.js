@@ -37,7 +37,7 @@ function ScoreboardModal() {
           <div className="modal-header">
             <h5 className="modal-title" id="scoreboardModalLabel">
               <Trans
-                i18nKey="completed-game" 
+                i18nKey="completed-game"
                 values={{ name: scoreObject.name }}
               />
             </h5>
@@ -46,10 +46,13 @@ function ScoreboardModal() {
               className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
+              onClick={() => {
+                dispatch(closeModal("scoreboardModal"));
+              }}
             ></button>
           </div>
           <div className="modal-body">
-            <h5 className="modal-title ps-1 pb-2">{t('leadership')}</h5>
+            <h5 className="modal-title ps-1 pb-2">{t("leadership")}</h5>
             <div
               style={{
                 border: "1px dashed purple",
@@ -60,8 +63,8 @@ function ScoreboardModal() {
             <table className="table">
               <thead>
                 <tr>
-                  <th scope="col">{t('name.scoreboard')}</th>
-                  <th scope="col">{t('score.scoreboard')}</th>
+                  <th scope="col">{t("name.scoreboard")}</th>
+                  <th scope="col">{t("score.scoreboard")}</th>
                 </tr>
               </thead>
               <tbody>
@@ -97,7 +100,7 @@ function ScoreboardModal() {
                 className="btn text-light"
                 onClick={() => {
                   dispatch(reloadGame());
-                  dispatch(closeModal('scoreboardModal'))
+                  dispatch(closeModal("scoreboardModal"));
                 }}
                 style={{
                   float: "right",

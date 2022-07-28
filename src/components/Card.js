@@ -25,12 +25,15 @@ function Card({ cardInfo }) {
     const currentCardName = currentCard.id.split("/")[0];
 
     if (firstCardName === currentCardName) {
-      openedCards.forEach((card) => {
-        dispatch(updateCard({ ...card, isMatched: true,isOpened: true }));
-      });
-      dispatch(updateCard({ ...currentCard, isMatched: true,isOpened: true  }));
-
-      dispatch(increasePoint());
+      if(openedCards[0].id === currentCard.id) return;
+      else{
+        openedCards.forEach((card) => {
+          dispatch(updateCard({ ...card, isMatched: true,isOpened: true }));
+        });
+        dispatch(updateCard({ ...currentCard, isMatched: true,isOpened: true  }));
+  
+        dispatch(increasePoint());
+      }
     } else {
       openedCards.forEach((card) => {
         dispatch(updateCard({ ...card, isOpened: false }));
